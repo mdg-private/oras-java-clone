@@ -386,7 +386,7 @@ public final class Registry extends OCI<ContainerRef> {
             LOG.debug("Location header: {}", location);
             response = client.upload(
                     "PUT",
-                    URI.create("%s&digest=%s".formatted(location, digest)),
+                    URI.create("%s?digest=%s".formatted(location, digest)),
                     Map.of(Const.CONTENT_TYPE_HEADER, Const.APPLICATION_OCTET_STREAM_HEADER_VALUE),
                     blob,
                     Scopes.of(this, containerRef),
@@ -439,7 +439,7 @@ public final class Registry extends OCI<ContainerRef> {
             }
             LOG.debug("Location header: {}", location);
             response = client.put(
-                    URI.create("%s&digest=%s".formatted(location, digest)),
+                    URI.create("%s?digest=%s".formatted(location, digest)),
                     data,
                     Map.of(Const.CONTENT_TYPE_HEADER, Const.APPLICATION_OCTET_STREAM_HEADER_VALUE),
                     Scopes.of(this, containerRef),
